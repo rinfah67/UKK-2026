@@ -13,8 +13,9 @@ include 'includes/cek_session.php';
 
     <ul>
         <?php if ($_SESSION['role'] == 'admin') { ?>
-        <li><a href="menu1.php">menu 1</a></li>
-        <li><a href="menu2.php">menu 2</a></li>
+        <li><a href="kelola_guru.php">Kelola Guru</a></li>
+        <li><a href="kelola_siswa.php">Kelola Siswa</a></li>
+        <li><a href="kelola_kelas_siswa.php">Kelola Kelas Siswa</a></li>
      <?php } ?>
 
         <?php if ($_SESSION['role'] == 'guru' ) { ?> 
