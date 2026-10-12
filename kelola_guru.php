@@ -43,11 +43,15 @@ if (!$hasil) {
 <html lang="id">
 
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Kelola Guru</title>
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <h1>Kelola Guru</h1>
 
@@ -65,7 +69,7 @@ if (!$hasil) {
 
 <h2>Data Guru</h2>
 
-<table border="1" cellpadding="8" cellspacing="0">
+<table class="table table-sm table-dark">
 
     <tr>
         <th>No</th>
@@ -129,7 +133,7 @@ if (!$hasil) {
         <td>
 
             <a href="edit_guru.php?id=<?php echo $guru['id']; ?>">
-                Edit
+                <button type="button" class="btn btn-warning">Edit</button>
             </a>
 
             |
@@ -138,7 +142,7 @@ if (!$hasil) {
                 href="hapus_guru.php?id=<?php echo $guru['id']; ?>"
                 onclick="return confirm('Yakin ingin menghapus guru ini?')"
             >
-                Hapus
+                <button type="button" class="btn btn-danger">Hapus</button>
             </a>
 
         </td>
