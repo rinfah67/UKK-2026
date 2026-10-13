@@ -24,7 +24,7 @@ include 'includes/cek_session.php';
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active">
+                    <a href="dashboard.php" class="nav-link active">
                         Dashboard
                     </a>
                 </li>
@@ -44,22 +44,22 @@ include 'includes/cek_session.php';
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="kelola_walikelas.php" class="nav-link text-white">
                         Kelola Walikelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="penempatan_siswa.php" class="nav-link text-white">
                         Penempatan Siswa
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="kelola_pelanggaran_kategori.php" class="nav-link text-white">
                         Pelanggaran Kategori
                     </a>
                 </li>

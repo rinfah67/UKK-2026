@@ -61,17 +61,17 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link active">
+                    <a href="kelola_guru.php" class="nav-link text-white">
                         Data Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="Kelola_kelas_siswa.php" class="nav-link text-white">
+                    <a href="Kelola_kelas_siswa.php" class="nav-link active">
                         Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
