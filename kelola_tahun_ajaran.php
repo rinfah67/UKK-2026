@@ -43,7 +43,7 @@ if (!$hasil) {
             </h4>
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item mb-2">
-                    <a href="dashboard.php" class="nav-link active">
+                    <a href="dashboard.php" class="nav-link text-white">
                         Dashboard
                     </a>
                 </li>
@@ -58,13 +58,13 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="Kelola_kelas_siswa.php" class="nav-link text-white">
-                        Kelas
+                    <a href="Kelola_kelas.php" class="nav-link text-white">
+                        Data Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Kelola Tahun Ajaran
+                    <a href="kelola_tahun_ajaran.php" class="nav-link active">
+                        Data Tahun Ajaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">

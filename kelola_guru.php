@@ -71,18 +71,18 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link active">
+                    <a href="kelola_guru.php" class="nav-link text-white">
                         Data Guru
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="Kelola_kelas_siswa.php" class="nav-link text-white">
-                        Kelas
+                    <a href="Kelola_kelas.php" class="nav-link text-white">
+                        Data Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Kelola Tahun Ajaran
+                    <a href="kelola_tahun_ajaran.php" class="nav-link active">
+                        Data Tahun Ajaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
@@ -114,7 +114,8 @@ if (!$hasil) {
                 </li>
             </ul>
         </div>
-          <main class="col-md-9 col-lg-10 p-4">
+        <!-- KONTEN -->
+        <main class="col-md-9 col-lg-10 p-4">
 
 <h1>Kelola Guru</h1>
 

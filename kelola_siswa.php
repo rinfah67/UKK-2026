@@ -59,17 +59,17 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="Kelola_kelas_siswa.php" class="nav-link text-white">
+                    <a href="Kelola_kelas.php" class="nav-link text-white">
                         Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
                         Kelola Tahun Ajaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_walikelas.php" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white">
                         Kelola Walikelas
                     </a>
                 </li>
@@ -79,7 +79,7 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_pelanggaran_kategori.php" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white">
                         Pelanggaran Kategori
                     </a>
                 </li>

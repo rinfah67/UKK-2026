@@ -49,17 +49,17 @@ include 'includes/cek_session.php';
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_walikelas.php" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white">
                         Kelola Walikelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="penempatan_siswa.php" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white">
                         Penempatan Siswa
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="kelola_pelanggaran_kategori.php" class="nav-link text-white">
+                    <a href="#" class="nav-link text-white">
                         Pelanggaran Kategori
                     </a>
                 </li>
@@ -77,8 +77,7 @@ include 'includes/cek_session.php';
                 </li>
             </ul>
         </div>
-        <!-- KONTEN -->
-        <main class="col-md-9 col-lg-10 p-4">
+          <main class="col-md-9 col-lg-10 p-4">
             <h2>Dashboard</h2>
             <p>
                 Selamat datang di halaman dashboard.
