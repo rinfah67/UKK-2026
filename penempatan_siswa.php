@@ -57,6 +57,41 @@ $hasil = mysqli_query($koneksi, $sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Penempatan Siswa</title>
+    <style>/* Sidebar tetap di kiri dan memenuhi tinggi layar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Mengatur posisi konten utama */
+main {
+    margin-left: 16.666667%;
+}
+
+/* Untuk layar besar */
+@media (min-width: 992px) {
+    main {
+        margin-left: 16.666667%;
+    }
+}
+
+/* Untuk layar kecil */
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}</style>
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -66,7 +101,7 @@ $hasil = mysqli_query($koneksi, $sql);
 <div class="container-fluid">
     <div class="row">
         <!-- SIDEBAR -->
-        <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3">
+        <div class="col-md-3 col-lg-2 bg-dark p-3 sidebar">
             <h4 class="text-white mb-4">
                 My Website
             </h4>
@@ -112,14 +147,14 @@ $hasil = mysqli_query($koneksi, $sql);
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="about_me.php" class="nav-link text-white">
                         About Me
                     </a>
                 </li>
                 
                 <hr class="text-secondary">
                 <li class="nav-item">
-                    <a href="logoout.php" class="nav-link text-danger">
+                    <a href="logout.php" class="nav-link text-danger">
                         Logout
                     </a>
                 </li>

@@ -28,6 +28,41 @@ if (!$hasil) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Kelola Siswa</title>
+    <style>/* Sidebar tetap di kiri dan memenuhi tinggi layar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* Mengatur posisi konten utama */
+main {
+    margin-left: 16.666667%;
+}
+
+/* Untuk layar besar */
+@media (min-width: 992px) {
+    main {
+        margin-left: 16.666667%;
+    }
+}
+
+/* Untuk layar kecil */
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}</style>
 </head>
 
 <body>
@@ -38,7 +73,7 @@ if (!$hasil) {
 <div class="container-fluid">
     <div class="row">
         <!-- SIDEBAR -->
-        <div class="col-md-3 col-lg-2 bg-dark min-vh-100 p-3">
+        <div class="col-md-3 col-lg-2 bg-dark p-3 sidebar">
             <h4 class="text-white mb-4">
                 My Website
             </h4>
@@ -60,12 +95,12 @@ if (!$hasil) {
                 </li>
                 <li class="nav-item mb-2">
                     <a href="Kelola_kelas.php" class="nav-link text-white">
-                        Kelas
+                        Data Kelas
                     </a>
                 </li>
                 <li class="nav-item mb-2">
                     <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Kelola Tahun Ajaran
+                        Data Tahun Ajaran
                     </a>
                 </li>
                 <li class="nav-item mb-2">
@@ -84,14 +119,14 @@ if (!$hasil) {
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
+                    <a href="about_me.php" class="nav-link text-white">
                         About Me
                     </a>
                 </li>
                 
                 <hr class="text-secondary">
                 <li class="nav-item">
-                    <a href="logoout.php" class="nav-link text-danger">
+                    <a href="logout.php" class="nav-link text-danger">
                         Logout
                     </a>
                 </li>
