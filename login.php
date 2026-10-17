@@ -1,74 +1,204 @@
-<?php
 
+<?php
 session_start();
 
-include 'config/koneksi.php';
+// Jika sudah login, langsung ke dashboard
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    header("Location: dashboard.php");
+    exit;
+}
 
+$error = $_GET['error'] ?? '';
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Login - Pelanggaran Siswa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Si Pelang</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #111827;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-panel {
+    width: 100%;
+    max-width: 765px;
+    min-height: 545px;
+    background: #2563eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 20px 40px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 7px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 357px;
+    background: #f8fafc;
+    border-radius: 11px;
+    padding: 7px 35px 22px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+
+.form-label {
+    font-size: 25px;
+    color: #1e293b;
+    margin-bottom: 1px;
+}
+
+.form-control {
+    height: 63px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: #e2e8f0;
+    color: #0f172a;
+    font-size: 23px;
+    padding: 10px 18px;
+    margin-bottom: 1px;
+}
+
+.form-control:focus {
+    background: #ffffff;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.btn-login {
+    display: block;
+    width: 216px;
+    max-width: 100%;
+    height: 63px;
+    margin: 34px auto 0;
+    border: none;
+    border-radius: 13px;
+    background: #1d4ed8;
+    color: #ffffff;
+    font-size: 25px;
+    transition: background 0.2s ease;
+}
+
+.btn-login:hover {
+    background: #1e40af;
+    color: #ffffff;
+}
+
+.alert {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+    .login-panel {
+        min-height: auto;
+        padding: 25px 15px 35px;
+    }
+
+    .logo {
+        width: 125px;
+        height: 125px;
+    }
+
+    .login-card {
+        padding: 12px 22px 22px;
+    }
+
+    .form-label {
+        font-size: 21px;
+    }
+
+    .form-control {
+        height: 55px;
+        font-size: 19px;
+    }
+
+    .btn-login {
+        height: 55px;
+        font-size: 22px;
+    }
+}
+
+    </style>
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <h1>Login Pelanggaran Siswa</h1>
+    <div class="login-panel">
 
-    <?php
-    if (isset($_SESSION['pesan_error'])) {
-        echo "<p>" . $_SESSION['pesan_error'] . "</p>";
-        unset($_SESSION['pesan_error']);
-    }
-    ?>
-<form action="proses_login.php" method="POST">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-    <!-- <form action="proses_login.php" method="POST">
+        <!-- Logo dari folder img -->
+        <img src="img/halo.png" alt="Logo Si Pelang" class="logo">
 
-        <table>
+        <!-- Form login -->
+        <div class="login-card">
 
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td>
-                    <input type="email" name="email" required>
-                </td>
-            </tr>
+            <form action="proses_login.php" method="POST">
 
-            <tr>
-                <td>Password</td>
-                <td>:</td>
-                <td>
-                    <input type="password" name="password" required>
-                </td>
-            </tr>
+                <div>
+                    <label for="email" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        class="form-control"
+                        placeholder="Masukkan username atau email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
 
-            <tr>
-                <td colspan="3">
-                    <input type="submit" name="login" value="Login">
-                </td>
-            </tr>
+                <div>
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control"
+                        placeholder="Masukkan password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
 
-        </table>
+                <?php if ($error !== ''): ?>
+                    <div class="alert alert-danger mb-0">
+                        Login gagal. Periksa username dan password.
+                    </div>
+                <?php endif; ?>
 
-    </form> -->
+                <button type="submit" name="login" class="btn-login">
+                    MASUK
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </body>
-
 </html>

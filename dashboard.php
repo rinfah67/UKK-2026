@@ -16,11 +16,44 @@ include 'includes/cek_session.php';
 
 <div class="container-fluid">
     <div class="row">
-        <?php
-            include "layout/sidebar.php";
-        ?>
-        <!-- KONTEN -->
-        <main class="col-md-9 col-lg-10 p-4">
+
+        <!-- SIDEBAR -->
+        <div class="col-12 col-md-3 col-lg-2 bg-dark text-white min-vh-100 p-3">
+            <h4 class="mb-4">Si Pelang</h4>
+
+            <nav class="nav nav-pills flex-column gap-2">
+                <a href="dashboard.php" class="nav-link text-white">
+                    Dashboard
+                </a>
+
+                <a href="catatan_pelanggaran.php" class="nav-link active">
+                    Catat Pelanggaran
+                </a>
+
+                <a href="tindakan.php" class="nav-link text-white">
+                    Tindakan
+                </a>
+
+                <a href="riwayat.php" class="nav-link text-white">
+                    Riwayat
+                </a>
+
+                <a href="rekap_poin.php" class="nav-link text-white">
+                    Rekap Poin
+                </a>
+
+                <hr>
+
+                <a href="logout.php"
+                   class="nav-link text-danger"
+                   onclick="return confirm('Yakin ingin logout?')">
+                    Logout
+                </a>
+            </nav>
+        </div>
+
+        <!-- KONTEN UTAMA -->
+        <main class="col-12 col-md-9 col-lg-10 p-3 p-md-4">
             <h2>Dashboard</h2>
             <p>
                 Selamat datang di halaman dashboard
