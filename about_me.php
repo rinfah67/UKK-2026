@@ -134,95 +134,10 @@ $dashboard = "dashboard.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <div class="container-fluid">
-    <div class="row">
+    <?php include "layout/sidebar.php"; ?>
 
-        <!-- SIDEBAR -->
-        <div class="sidebar bg-dark p-3">
-            <h4 class="text-white mb-4">My Website</h4>
-
-            <ul class="nav nav-pills flex-column">
-
-                <li class="nav-item mb-2">
-                    <a href="<?php echo htmlspecialchars($dashboard); ?>"
-                       class="nav-link text-white">
-                        Dashboard
-                    </a>
-                </li>
-
-                <?php if ($role === 'admin') { ?>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_siswa.php" class="nav-link text-white">
-                            Data Siswa
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_guru.php" class="nav-link text-white">
-                            Data Guru
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_kelas.php" class="nav-link text-white">
-                            Kelola Kelas
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                            Kelola Tahun Ajaran
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_walikelas.php" class="nav-link text-white">
-                            Kelola Walikelas
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_kelas_siswa.php" class="nav-link text-white">
-                            Penempatan Siswa
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2">
-                        <a href="kelola_pelanggaran_kategori.php" class="nav-link text-white">
-                            Pelanggaran Kategori
-                        </a>
-                    </li>
-
-                <?php } ?>
-
-                <?php if ($role === 'guru') { ?>
-
-                    <li class="nav-item mb-2">
-                        <a href="catatan_pelanggaran.php" class="nav-link text-white">
-                            Catat Pelanggaran
-                        </a>
-                    </li>
-
-                <?php } ?>
-
-                <li class="nav-item mb-2">
-                    <a href="about_me.php" class="nav-link active" aria-current="page">
-                        About Me
-                    </a>
-                </li>
-
-                <hr class="text-secondary">
-
-                <li class="nav-item">
-                    <a href="logout.php" class="nav-link text-danger">
-                        Logout
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <!-- KONTEN ABOUT ME -->
+    <main class="row">
+        <div class="col-9 offset-3 col-lg-10 offset-lg-2 p-4">
         <div class="profile-card">
 
             <div class="profil">

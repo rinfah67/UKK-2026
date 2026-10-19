@@ -1,231 +1,210 @@
-<?php
 
+<?php
 session_start();
 include 'config/koneksi.php';
 
+// CEK LOGIN
 if (!isset($_SESSION['login'])) {
     header("Location: login.php");
     exit;
 }
 
-if ($_SESSION['role'] != 'admin') {
-    echo "Akses ditolak!";
-    exit;
+// CEK ROLE ADMIN
+if (($_SESSION['role'] ?? '') != 'admin') {
+    die("Akses ditolak!");
 }
 
+// AMBIL DATA SISWA
 $sql = "SELECT * FROM t_siswa ORDER BY id DESC";
 $hasil = mysqli_query($koneksi, $sql);
 
 if (!$hasil) {
     die("Gagal mengambil data siswa: " . mysqli_error($koneksi));
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Kelola Siswa</title>
-    <style>/* Sidebar tetap di kiri dan memenuhi tinggi layar */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 1000;
-}
 
-/* Mengatur posisi konten utama */
-main {
-    margin-left: 16.666667%;
-}
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-/* Untuk layar besar */
-@media (min-width: 992px) {
-    main {
-        margin-left: 16.666667%;
-    }
-}
-
-/* Untuk layar kecil */
-@media (max-width: 767.98px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    main {
-        margin-left: 0;
-    }
-}</style>
+    <!-- DataTables Bootstrap 5 -->
+    <link href="https://cdn.datatables.net/2.3.4/css/dataTables.bootstrap5.min.css"
+          rel="stylesheet">
 </head>
 
 <body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <div class="container-fluid">
-    <div class="row">
-        <!-- SIDEBAR -->
-        <div class="col-md-3 col-lg-2 bg-dark p-3 sidebar">
-            <h4 class="text-white mb-4">
-                My Website
-            </h4>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item mb-2">
-                    <a href="dashboard.php" class="nav-link text-white">
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_siswa.php" class="nav-link active">
-                        Data Siswa
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link text-white">
-                        Data Guru
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="Kelola_kelas.php" class="nav-link text-white">
-                        Data Kelas
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Data Tahun Ajaran
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
-                        Kelola Walikelas
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
-                        Penempatan Siswa
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white">
-                        Pelanggaran Kategori
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="about_me.php" class="nav-link text-white">
-                        About Me
-                    </a>
-                </li>
-                
-                <hr class="text-secondary">
-                <li class="nav-item">
-                    <a href="logout.php" class="nav-link text-danger">
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </div>
-          <main class="col-md-9 col-lg-10 p-4">
-            
-<h1>Kelola Siswa</h1>
+    <?php include "layout/sidebar.php"; ?>
 
-<a href="dashboard.php">Kembali ke Dashboard</a>
-<br><br>
+    <main class="row">
+        <div class="col-9 offset-3 col-lg-10 offset-lg-2 p-4">
 
-<a href="tambah_siswa.php">Tambah Siswa</a>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1>Kelola Siswa</h1>
 
-<hr>
+                <a href="tambah_siswa.php" class="btn btn-primary">
+                    + Tambah Siswa
+                </a>
+            </div>
 
-<table class="table table-sm table-dark">
-
-    <tr>
-        <th>No</th>
-        <th>NIS</th>
-        <th>NISN</th>
-        <th>Nama</th>
-        <th>Jenis Kelamin</th>
-        <th>Tanggal Lahir</th>
-        <th>Alamat</th>
-        <th>Status</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-        <th>Aksi</th>
-    </tr>
-
-    <?php
-    $no = 1;
-
-    while ($siswa = mysqli_fetch_assoc($hasil)) {
-    ?>
-
-    <tr>
-
-        <td><?php echo $no++; ?></td>
-
-        <td><?php echo $siswa['nis']; ?></td>
-
-        <td><?php echo $siswa['nisn']; ?></td>
-
-        <td><?php echo $siswa['nama']; ?></td>
-
-        <td>
-            <?php
-            if ($siswa['jenis_kelamin'] == 'L') {
-                echo "Laki-laki";
-            } else {
-                echo "Perempuan";
-            }
-            ?>
-        </td>
-
-        <td><?php echo $siswa['tanggal_lahir']; ?></td>
-
-        <td><?php echo $siswa['alamat']; ?></td>
-
-        <td>
-            <?php
-            if ($siswa['status_aktif'] == 1) {
-                echo "Aktif";
-            } else {
-                echo "Tidak Aktif";
-            }
-            ?>
-        </td>
-
-        <td><?php echo $siswa['created_at']; ?></td>
-
-        <td><?php echo $siswa['updated_at']; ?></td>
-
-        <td>
-            <a href="edit_siswa.php?id=<?php echo $siswa['id']; ?>">
-                <button type="button" class="btn btn-warning">Edit</button>
+            <a href="dashboard.php" class="btn btn-secondary btn-sm mb-3">
+                Kembali ke Dashboard
             </a>
 
-            |
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Data Siswa</h5>
+                </div>
 
-            <a
-                href="hapus_siswa.php?id=<?php echo $siswa['id']; ?>"
-                onclick="return confirm('Yakin ingin menghapus siswa ini?')"
-            >
-                <button type="button" class="btn btn-danger">Hapus</button>
-            </a>
-        </td>
+                <div class="card-body">
+                    <div class="table-responsive">
 
-    </tr>
-    
+                        <table id="tabelSiswa"
+                               class="table table-striped table-bordered table-hover align-middle">
 
-    <?php
-    }
-    ?>
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>NIS</th>
+                                    <th>NISN</th>
+                                    <th>Nama</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tanggal Lahir</th>
+                                    <th>Alamat</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Updated At</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
 
-</table>
+                            <tbody>
+                                <?php
+                                $no = 1;
+
+                                while ($siswa = mysqli_fetch_assoc($hasil)) {
+                                ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['nis'] ?? ''); ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['nisn'] ?? ''); ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['nama'] ?? ''); ?>
+                                        </td>
+
+                                        <td>
+                                            <?php
+                                            if ($siswa['jenis_kelamin'] == 'L') {
+                                                echo "Laki-laki";
+                                            } elseif ($siswa['jenis_kelamin'] == 'P') {
+                                                echo "Perempuan";
+                                            } else {
+                                                echo "-";
+                                            }
+                                            ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['tanggal_lahir'] ?? '-'); ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['alamat'] ?? '-'); ?>
+                                        </td>
+
+                                        <td>
+                                            <?php if ($siswa['status_aktif'] == 1) { ?>
+                                                <span class="badge bg-success">Aktif</span>
+                                            <?php } else { ?>
+                                                <span class="badge bg-danger">Tidak Aktif</span>
+                                            <?php } ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['created_at'] ?? '-'); ?>
+                                        </td>
+
+                                        <td>
+                                            <?= htmlspecialchars($siswa['updated_at'] ?? '-'); ?>
+                                        </td>
+
+                                        <td>
+                                            <div class="d-flex gap-1">
+                                                <a href="edit_siswa.php?id=<?= (int) $siswa['id']; ?>"
+                                                   class="btn btn-warning btn-sm">
+                                                    Edit
+                                                </a>
+
+                                                <a href="hapus_siswa.php?id=<?= (int) $siswa['id']; ?>"
+                                                   class="btn btn-danger btn-sm"
+                                                   onclick="return confirm('Yakin ingin menghapus siswa ini?')">
+                                                    Hapus
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.3.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#tabelSiswa').DataTable({
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50, 100],
+        order: [],
+        language: {
+            search: "Cari:",
+            lengthMenu: "Tampilkan _MENU_ data",
+            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data",
+            zeroRecords: "Data siswa tidak ditemukan",
+            emptyTable: "Belum ada data siswa",
+            paginate: {
+                first: "Pertama",
+                last: "Terakhir",
+                next: "Berikutnya",
+                previous: "Sebelumnya"
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>

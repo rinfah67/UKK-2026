@@ -57,119 +57,24 @@ $hasil = mysqli_query($koneksi, $sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <meta charset="UTF-8">
     <title>Penempatan Siswa</title>
-    <style>/* Sidebar tetap di kiri dan memenuhi tinggi layar */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 1000;
-}
 
-/* Mengatur posisi konten utama */
-main {
-    margin-left: 16.666667%;
-}
-
-/* Untuk layar besar */
-@media (min-width: 992px) {
-    main {
-        margin-left: 16.666667%;
-    }
-}
-
-/* Untuk layar kecil */
-@media (max-width: 767.98px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    main {
-        margin-left: 0;
-    }
-}</style>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
 <div class="container-fluid">
-    <div class="row">
-        <!-- SIDEBAR -->
-        <div class="col-md-3 col-lg-2 bg-dark p-3 sidebar">
-            <h4 class="text-white mb-4">
-                My Website
-            </h4>
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item mb-2">
-                    <a href="dashboard.php" class="nav-link text-white">
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_siswa.php" class="nav-link text-white">
-                        Data Siswa
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_guru.php" class="nav-link text-white">
-                        Data Guru
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="Kelola_kelas.php" class="nav-link text-white">
-                        Data Kelas
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_tahun_ajaran.php" class="nav-link text-white">
-                        Data Tahun Ajaran
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_walikelas.php" class="nav-link text-white">
-                        Kelola Walikelas
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="penempatan_siswa.php" class="nav-link active">
-                        Penempatan Siswa
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="kelola_pelanggaran_kategori.php" class="nav-link text-white">
-                        Pelanggaran Kategori
-                    </a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="about_me.php" class="nav-link text-white">
-                        About Me
-                    </a>
-                </li>
-                
-                <hr class="text-secondary">
-                <li class="nav-item">
-                    <a href="logout.php" class="nav-link text-danger">
-                        Logout
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- KONTEN -->
-        <main class="col-md-9 col-lg-10 p-4">
+    <?php include "layout/sidebar.php"; ?>
+
+    <main class="row">
+        <div class="col-9 offset-3 col-lg-10 offset-lg-2 p-4">
             <h2>Penempatan Siswa</h2>
             <p>
                 Selamat datang di halaman Penempatan Siswa.
             </p>
             <div class="row">
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <h1>Penempatan Siswa</h1>
 

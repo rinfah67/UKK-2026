@@ -48,7 +48,7 @@ if (!$guru) {
 
 <h1>Edit Guru</h1>
 
-<a href="kelolaguru.php">
+<a href="kelola_guru.php">
     Kembali ke Kelola Guru
 </a>
 
